@@ -48,7 +48,7 @@ docker-compose down
 docker-compose down -v
 ```
 
-## echnical Details
+## Technical Details
 
 ### Architecture
 - **Web Server**: PHP 8.1 with Apache
