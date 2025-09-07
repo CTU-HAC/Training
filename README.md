@@ -1,2 +1,2 @@
 # Training
-Want more? -> wargame.nexus/
+Want more? -> [Wargame Nexus](https://wargame.nexus/)
