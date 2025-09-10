@@ -1,0 +1,7 @@
+Mô tả: Mình có thứ muốn tặng cậu, nhưng key mình vô tình quăng vào máy băm rồi, hông biết là máy nào luôn, nhưng có mình tin chắc là cậu sẽ có cách.
+
+Key: 4d1608c849f1a4968565d5019e500b9c3541f654c33ac9d096b610d27229499c
+
+Đây là quà của mình: 250d0f030210160b010d3c151c0118173e5a3b0c3c5d5d19 
+
+Flag format: Flag{...}
