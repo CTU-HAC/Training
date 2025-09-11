@@ -10,6 +10,6 @@ Python
 
 pwntools: used in Python script to exploit this challenge
 
-**Use one-gadget, pwninit
+**Use pwninit
 
 Goal: Get a shell
