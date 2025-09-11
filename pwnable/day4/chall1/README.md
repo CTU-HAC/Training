@@ -4,12 +4,12 @@ Tag: Buffer Overflow / ROPchain
 
 Tools:
 
-  gdb: pwndbg, peda, gef,...
+gdb: pwndbg, peda, gef,...
 
-  Python
+Python
 
-  pwntools: used in Python script to exploit this challenge
+pwntools: used in Python script to exploit this challenge
 
-  **Use one-gadget, pwninit
+**Use one-gadget, pwninit
 
 Goal: Get a shell
