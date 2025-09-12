@@ -1,0 +1,21 @@
+@"
+# Node
+node_modules/
+npm-debug.log*
+yarn.lock
+package-lock.json
+
+# Builds
+dist/
+build/
+.vite/
+
+# Env
+.env
+.env.local
+
+# OS/Editor
+.DS_Store
+Thumbs.db
+.vscode/
+"@ | Set-Content "Web/food_delivery_1/source/.gitignore"
