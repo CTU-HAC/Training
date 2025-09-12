@@ -1,0 +1,69 @@
+services:
+  mongo:
+    image: mongo:6
+    container_name: challenge4-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  backend:
+    image: node:18-alpine
+    container_name: challenge4-backend
+    working_dir: /app
+    environment:
+      #FLAG
+      FLAG: "FREZCTF{r4c3_c0nd1t10n_1n_n0d3j5}"
+      # Mongo connection (no auth)
+      DB_HOST: mongodb://mongo:27017
+      DB_NAME: food_delivery
+      DB_USER: ""
+      DB_PASSWORD: ""
+      # Control whether backend seeds data on startup
+      SEED_ON_START: "true"
+      # App secrets (adjust as needed for the challenge)
+      JWT_SECRET: "change_me_super_secret"
+      STRIPE_SECRET_KEY: "sk_test_dummy_key"
+      # Frontend URL used in orderController success/cancel URLs
+      FRONTEND_URL: "http://localhost:5173"
+    volumes:
+      - ./backend:/app
+      # Bind-mount uploads so your local images are served
+      - ./backend/src/uploads:/app/uploads
+      # Keep container's node_modules separate from host to avoid native addon issues
+      - /app/node_modules
+    command: sh -c "npm install && npm run start"
+    ports:
+      - "4000:4000"
+    depends_on:
+      mongo:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO", "-", "http://localhost:4000/"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 10s
+
+  frontend:
+    image: node:18-alpine
+    container_name: challenge4-frontend
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    ports:
+      - "5173:5173"
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  mongo_data:
