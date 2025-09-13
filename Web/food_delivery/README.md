@@ -16,7 +16,7 @@
 
 Training race condition attack skill.
 
-> Hint: You should have more than 50 dollars to get the flag...
+> Hint: You should have more than 100 dollars to get the flag...
 
 
 ## Quick Start
